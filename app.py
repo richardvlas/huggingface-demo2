@@ -2,7 +2,7 @@ import gradio as gr
 from transformers import pipeline
 
 # Load the text summarization pipeline
-summarizer = pipeline("summarization", model="EleutherAI/gpt-j-6B")
+summarizer = pipeline("summarization")
 
 def summarize_text(input_text):
     # Use the summarization pipeline to generate a summary
