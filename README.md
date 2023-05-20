@@ -1,6 +1,6 @@
 ---
 title: Demo2
-emoji: `:rocket:`
+emoji: :rocket:
 colorFrom: purple
 colorTo: purple
 sdk: gradio
