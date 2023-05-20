@@ -8,8 +8,9 @@ def predict(prompt):
     return summary
 
 with gr.Blocks() as demo:
-    textbox = gr.Textbox(placeholder="Enter text block to summarize here...", lines=4)
-    interface = gr.Interface(fn=predict, inputs=textbox, outputs="text")
-    demo.add(interface, "Summarizer", "Summarize text blocks with HuggingFace Transformers")
-    
-demo.launch()
+    textbox = gr.inputs.Textbox(lines=5, label="Input Text")
+    label = gr.outputs.Textbox(label="Output Summary")
+    gr.Interface(fn=predict, inputs=textbox, outputs=label, title="Summarizer", description="Summarize your text!").launch()
+
+# Path: Dockerfile
+
