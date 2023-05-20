@@ -17,9 +17,10 @@ jobs:
       - name: Add remote
         env:
           HF: ${{ secrets.HF }}
-        run: git remote add space https://Rici:$(HF)@huggingface.co/spaces/Rici/demo2
+        run: git remote add space https://Rici:$HF@huggingface.co/spaces/Rici/demo2
       - name: Push to Hugging Face Hub
         env:
           HF: ${{ secrets.HF }}
         run: |
-          git push --force https://Rici:$(HF)@$huggingface.co/spaces/Rici/demo2 main
+          git push --force https://Rici:$HF@huggingface.co/spaces/Rici/demo2 main
+          
