@@ -15,11 +15,6 @@ jobs:
           # we need the full history to be able to push tags
           fetch-depth: 0
       - name: Add remote
-        env:
-          HF: ${{ secrets.HF }}
         run: git remote add space https://Rici:${{ secrets.HF }}@huggingface.co/spaces/Rici/demo2
       - name: Push to Hugging Face Hub
-        env:
-          HF: ${{ secrets.HF }}
-        run: |
-          git push --force https://Rici:${{ secrets.HF }}@huggingface.co/spaces/Rici/demo2 main
+        run: git push --force https://Rici:${{ secrets.HF }}@huggingface.co/spaces/Rici/demo2 main
