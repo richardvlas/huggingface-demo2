@@ -9,6 +9,7 @@ def predict(prompt):
 
 with gr.Blocks() as demo:
     textbox = gr.Textbox(placeholder="Enter text block to summarize here...", lines=4)
-    gr.Interface(fn=predict, inputs=textbox, outputs="text")
-
+    interface = gr.Interface(fn=predict, inputs=textbox, outputs="text")
+    demo.add(interface, "Summarizer", "Summarize text blocks with HuggingFace Transformers")
+    
 demo.launch()
