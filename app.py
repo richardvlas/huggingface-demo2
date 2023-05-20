@@ -13,7 +13,7 @@ def summarize_text(input_text):
 iface = gr.Interface(
     fn=summarize_text,
     inputs=gr.inputs.Textbox(lines=10, placeholder="Enter text to summarize..."),
-    outputs=gr.outputs.Textbox(placeholder="Summary will appear here...")
+    outputs=gr.outputs.Textbox(),
 )
 
 # Run the interface
