@@ -1,16 +1,20 @@
-from transformers import pipeline
 import gradio as gr
+from transformers import pipeline
 
-model = pipeline("summarization")
+# Load the summarization model from Hugging Face
+summarizer = pipeline("summarization")
 
-def predict(prompt):
-    summary = model(prompt)[0]['summary_text']
-    return summary
+# Define the summarization function
+def summarize_text(input_text):
+    summarized = summarizer(input_text, max_length=100, min_length=30, do_sample=False)[0]
+    return summarized["summary_text"]
 
-with gr.Blocks() as demo:
-    textbox = gr.inputs.Textbox(lines=5, label="Input Text")
-    label = gr.outputs.Textbox(label="Output Summary")
-    gr.Interface(fn=predict, inputs=textbox, outputs=label, title="Summarizer", description="Summarize your text!").launch()
+# Create the Gradio interface
+iface = gr.Interface(
+    fn=summarize_text,
+    inputs=gr.inputs.Textbox(lines=10, placeholder="Enter text to summarize..."),
+    outputs=gr.outputs.Textbox(placeholder="Summary will appear here...")
+)
 
-# Path: Dockerfile
-
+# Run the interface
+iface.launch()
